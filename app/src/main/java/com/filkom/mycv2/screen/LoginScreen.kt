@@ -23,6 +23,22 @@ fun Login(onLogin: () -> Unit, onDaftar:()-> Unit)
     ) {
         Text(text = "LOGIN")
         OutlinedTextField(
+            value = "text",
+            onValueChange = {},
+            label = { Text("name") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 10.dp)
+        )
+        OutlinedTextField(
+            value = "text",
+            onValueChange = {},
+            label = { Text("nim") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 10.dp)
+        )
+        OutlinedTextField(
             value = "email",
             onValueChange = {},
             label = { Text("email") },
