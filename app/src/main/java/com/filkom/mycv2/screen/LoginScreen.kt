@@ -59,13 +59,13 @@ fun Login(onLogin: () -> Unit, onDaftar:()-> Unit)
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(vertical = 10.dp),
-            onClick = {onLogin})
+            onClick = onLogin)
         {
             Text("LOGIN")
         }
         Button(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            onClick = {onDaftar})
+            onClick = onDaftar)
         {
             Text("DAFTAR")
         }

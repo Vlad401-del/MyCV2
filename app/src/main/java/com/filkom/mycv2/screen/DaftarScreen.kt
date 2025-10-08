@@ -56,7 +56,7 @@ fun daftar(onSimpan: () -> Unit) {
 
         Button(
             modifier = Modifier.align(Alignment.CenterHorizontally).padding(vertical = 10.dp),
-            onClick = {onSimpan})
+            onClick = onSimpan)
         {
             Text("SIMPAN")
         }

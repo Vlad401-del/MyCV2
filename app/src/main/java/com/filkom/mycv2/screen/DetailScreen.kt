@@ -48,7 +48,7 @@ fun detail(onDaftar: () -> Unit)
 
         Button (
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            onClick = {onDaftar})
+            onClick = onDaftar)
         {
             Text("DAFTAR")
         }
