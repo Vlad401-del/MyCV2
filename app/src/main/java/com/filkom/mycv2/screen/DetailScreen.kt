@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun detail()
+fun detail(onDaftar: () -> Unit)
 {
     Column (
         modifier = Modifier
@@ -48,7 +48,7 @@ fun detail()
 
         Button (
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            onClick = {})
+            onClick = {onDaftar})
         {
             Text("DAFTAR")
         }
@@ -58,5 +58,5 @@ fun detail()
 @Preview
 @Composable
 fun detailPreview() {
-    detail()
+    detail({})
 }
