@@ -20,7 +20,7 @@ fun daftar(onSimpan: () -> Unit) {
             .fillMaxSize()
             .padding(30.dp)
     ) {
-        Text(text = "LOGIN")
+        Text(text = "DAFTAR")
         OutlinedTextField(
             value = "text",
             onValueChange = {},
@@ -46,7 +46,7 @@ fun daftar(onSimpan: () -> Unit) {
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
-            value = "text",
+            value = "alamat",
             onValueChange = { },
             label = { Text("alamat") },
             modifier = Modifier
