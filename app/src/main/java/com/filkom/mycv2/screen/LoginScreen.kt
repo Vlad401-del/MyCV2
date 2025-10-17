@@ -18,8 +18,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun Login(onLogin: (email: String, passwd: String) -> Unit, onDaftar:()-> Unit)
 {
-    var _email by remember { mutableStateOf("") }
-    var _passwd by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var passwd by remember { mutableStateOf("") }
     Column (
         modifier = Modifier
             .fillMaxSize()
@@ -43,16 +43,16 @@ fun Login(onLogin: (email: String, passwd: String) -> Unit, onDaftar:()-> Unit)
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
-            value = "_email",
-            onValueChange = {newEmail -> _email = newEmail},
+            value = "email",
+            onValueChange = {email = it},
             label = { Text("email") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
-            value = "_passwd",
-            onValueChange = {_passwd = it},
+            value = "passwd",
+            onValueChange = {passwd = it},
             label = { Text("password") },
             modifier = Modifier
                 .fillMaxWidth()
@@ -63,7 +63,7 @@ fun Login(onLogin: (email: String, passwd: String) -> Unit, onDaftar:()-> Unit)
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(vertical = 10.dp),
-            onClick = {onLogin(_email, _passwd)}
+            onClick = {onLogin(email, passwd)}
         ){
             Text("LOGIN")
         }

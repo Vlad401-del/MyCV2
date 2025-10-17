@@ -13,9 +13,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.filkom.mycv2.UserData
 
 @Composable
-fun detail(onDaftar: () -> Unit)
+fun detail(user: UserData, onDaftar: () -> Unit)
 {
     Column (
         modifier = Modifier
@@ -30,19 +31,19 @@ fun detail(onDaftar: () -> Unit)
             textAlign = TextAlign.Center
         )
         Text(
-            text = "nim",fontSize = 14.sp,
+            text = "NIM: ${user.nim}", fontSize = 14.sp,
             modifier = Modifier.padding(vertical = 10.dp)
         )
         Text(
-            text = "nama", fontSize = 14.sp,
+            text = "Nama: ${user.nama}", fontSize = 14.sp,
             modifier = Modifier.padding(vertical = 10.dp)
         )
         Text(
-            text = "email",fontSize = 14.sp,
+            text = "Email: ${user.email}", fontSize = 14.sp,
             modifier = Modifier.padding(vertical = 10.dp)
         )
         Text(
-            text = "alamat",fontSize = 14.sp,
+            text = "Alamat: ${user.alamat}", fontSize = 14.sp,
             modifier = Modifier.padding(vertical = 10.dp)
         )
 
@@ -58,5 +59,5 @@ fun detail(onDaftar: () -> Unit)
 @Preview
 @Composable
 fun detailPreview() {
-    detail({})
+    detail(UserData("test", "123", "test", "test", "test"){})
 }

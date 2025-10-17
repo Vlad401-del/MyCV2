@@ -8,6 +8,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -15,7 +16,13 @@ import androidx.compose.ui.unit.dp
 import com.filkom.mycv2.UserData
 
 @Composable
-fun daftar(onSimpan: () -> Unit) {
+fun daftar(onSimpan: (UserData) -> Unit) {
+    var nama by remember { mutableStateOf("") }
+    var nim by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var alamat by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+
     Column (
         modifier = Modifier
             .fillMaxSize()
@@ -23,33 +30,41 @@ fun daftar(onSimpan: () -> Unit) {
     ) {
         Text(text = "DAFTAR")
         OutlinedTextField(
-            value = "text",
-            onValueChange = {},
-            label = { Text("name") },
+            value = "nama",
+            onValueChange = {nama = it},
+            label = { Text("Nama") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
-            value = "text",
-            onValueChange = {},
-            label = { Text("nim") },
+            value = "nim",
+            onValueChange = {nim = it},
+            label = { Text("NIM") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
             value = "email",
-            onValueChange = {},
-            label = { Text("email") },
+            onValueChange = {email = it},
+            label = { Text("Email") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
             value = "alamat",
-            onValueChange = { },
-            label = { Text("alamat") },
+            onValueChange = {alamat = it},
+            label = { Text("Alamat") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 10.dp)
+        )
+        OutlinedTextField(
+            value = "password",
+            onValueChange = {password = it},
+            label = { Text("Password") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 10.dp)
@@ -57,7 +72,15 @@ fun daftar(onSimpan: () -> Unit) {
 
         Button(
             modifier = Modifier.align(Alignment.CenterHorizontally).padding(vertical = 10.dp),
-            onClick = onSimpan(UserData(email = _email, nim = _nim, nama = _nama, alamat = _alamat)))
+            onClick = {
+                val userData = UserData(
+                    nama = nama,
+                    nim = nim,
+                    email = email,
+                    alamat = alamat,
+                    password = password
+                )onSimpan(userData)
+            })
         {
             Text("SIMPAN")
         }
