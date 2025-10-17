@@ -23,15 +23,14 @@ class UserViewModel : ViewModel(){
         }
     }
 
-    fun daftar(UserData: UserData){
+    fun daftar(userData: UserData){
         _user.update { it.copy (
-                email = userData.email,
-                nim = userData.nim,
-                nama = userData.nama,
-                alamat = userData.alamat,
-                password = userData.password
-            )
+            email = userData.email,
+            nim = userData.nim,
+            nama = userData.nama,
+            alamat = userData.alamat,
+            password = userData.password
+        )
         }
     }
 }
-

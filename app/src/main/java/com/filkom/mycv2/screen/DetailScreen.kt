@@ -59,5 +59,5 @@ fun detail(user: UserData, onDaftar: () -> Unit)
 @Preview
 @Composable
 fun detailPreview() {
-    detail(UserData("test", "123", "test", "test", "test"){})
+    detail(UserData("test", "123", "test", "test", "test"), onDaftar = {})
 }

@@ -8,7 +8,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,7 +33,7 @@ fun daftar(onSimpan: (UserData) -> Unit) {
     ) {
         Text(text = "DAFTAR")
         OutlinedTextField(
-            value = "nama",
+            value = nama,
             onValueChange = {nama = it},
             label = { Text("Nama") },
             modifier = Modifier
@@ -38,7 +41,7 @@ fun daftar(onSimpan: (UserData) -> Unit) {
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
-            value = "nim",
+            value = nim,
             onValueChange = {nim = it},
             label = { Text("NIM") },
             modifier = Modifier
@@ -46,7 +49,7 @@ fun daftar(onSimpan: (UserData) -> Unit) {
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
-            value = "email",
+            value = email,
             onValueChange = {email = it},
             label = { Text("Email") },
             modifier = Modifier
@@ -54,7 +57,7 @@ fun daftar(onSimpan: (UserData) -> Unit) {
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
-            value = "alamat",
+            value = alamat,
             onValueChange = {alamat = it},
             label = { Text("Alamat") },
             modifier = Modifier
@@ -62,7 +65,7 @@ fun daftar(onSimpan: (UserData) -> Unit) {
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
-            value = "password",
+            value = password,
             onValueChange = {password = it},
             label = { Text("Password") },
             modifier = Modifier
@@ -79,7 +82,8 @@ fun daftar(onSimpan: (UserData) -> Unit) {
                     email = email,
                     alamat = alamat,
                     password = password
-                )onSimpan(userData)
+                )
+                onSimpan(userData)
             })
         {
             Text("SIMPAN")
