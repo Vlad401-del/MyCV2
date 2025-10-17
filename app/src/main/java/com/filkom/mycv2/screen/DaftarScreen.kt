@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.filkom.mycv2.UserData
 
 @Composable
 fun daftar(onSimpan: () -> Unit) {
@@ -56,7 +57,7 @@ fun daftar(onSimpan: () -> Unit) {
 
         Button(
             modifier = Modifier.align(Alignment.CenterHorizontally).padding(vertical = 10.dp),
-            onClick = onSimpan)
+            onClick = onSimpan(UserData(email = _email, nim = _nim, nama = _nama, alamat = _alamat)))
         {
             Text("SIMPAN")
         }

@@ -1,6 +1,7 @@
 package com.filkom.mycv2
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -14,15 +15,18 @@ fun NavGraph() {
     NavHost(navController = navController, startDestination = "login") {
         composable("login") {
             Login(
-                onLogin = { navController.navigate("detail") },
+                onLogin = { email, passwd -> viewModel.login(email = email, password = passwd)
+                    navController.navigate("detail") },
                 onDaftar = { navController.navigate("daftar") }
             )
         }
         composable("detail") {
-            detail(onDaftar = { navController.navigate("daftar") })
+            detail(user = viewModel.user.collectAsState().value,
+                onDaftar = { navController.navigate("daftar") })
         }
         composable("daftar") {
-            daftar(onSimpan = { navController.navigate("detail") })
+            daftar(onSimpan = { userData -> viewModel.daftar(UserData)
+                navController.navigate("detail") })
         }
     }
 }

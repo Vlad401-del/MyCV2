@@ -8,14 +8,18 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Login(onLogin: () -> Unit, onDaftar:()-> Unit)
+fun Login(onLogin: (email: String, passwd: String) -> Unit, onDaftar:()-> Unit)
 {
+    var _email by remember { mutableStateOf("") }
+    var _passwd by remember { mutableStateOf("") }
     Column (
         modifier = Modifier
             .fillMaxSize()
@@ -23,7 +27,7 @@ fun Login(onLogin: () -> Unit, onDaftar:()-> Unit)
     ) {
         Text(text = "LOGIN")
         OutlinedTextField(
-            value = "text",
+            value = "Nama",
             onValueChange = {},
             label = { Text("name") },
             modifier = Modifier
@@ -31,7 +35,7 @@ fun Login(onLogin: () -> Unit, onDaftar:()-> Unit)
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
-            value = "text",
+            value = "Nim",
             onValueChange = {},
             label = { Text("nim") },
             modifier = Modifier
@@ -39,16 +43,16 @@ fun Login(onLogin: () -> Unit, onDaftar:()-> Unit)
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
-            value = "email",
-            onValueChange = {},
+            value = "_email",
+            onValueChange = {newEmail -> _email = newEmail},
             label = { Text("email") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 10.dp)
         )
         OutlinedTextField(
-            value = "passwd",
-            onValueChange = { },
+            value = "_passwd",
+            onValueChange = {_passwd = it},
             label = { Text("password") },
             modifier = Modifier
                 .fillMaxWidth()
@@ -59,8 +63,8 @@ fun Login(onLogin: () -> Unit, onDaftar:()-> Unit)
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(vertical = 10.dp),
-            onClick = onLogin)
-        {
+            onClick = {onLogin(_email, _passwd)}
+        ){
             Text("LOGIN")
         }
         Button(
