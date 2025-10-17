@@ -18,11 +18,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Login(onLogin: (email: String, passwd: String) -> Unit, onDaftar:()-> Unit)
-{
+fun Login(onLogin: (email: String, passwd: String) -> Unit, onDaftar: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var passwd by remember { mutableStateOf("") }
-    Column (
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(30.dp)
@@ -46,7 +45,7 @@ fun Login(onLogin: (email: String, passwd: String) -> Unit, onDaftar:()-> Unit)
         )
         OutlinedTextField(
             value = email,
-            onValueChange = {email = it},
+            onValueChange = { email = it },
             label = { Text("email") },
             modifier = Modifier
                 .fillMaxWidth()
@@ -54,25 +53,25 @@ fun Login(onLogin: (email: String, passwd: String) -> Unit, onDaftar:()-> Unit)
         )
         OutlinedTextField(
             value = passwd,
-            onValueChange = {passwd = it},
+            onValueChange = { passwd = it },
             label = { Text("password") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 10.dp)
         )
 
-        Button (
+        Button(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(vertical = 10.dp),
-            onClick = {onLogin(email, passwd)}
-        ){
+            onClick = { onLogin(email, passwd) }
+        ) {
             Text("LOGIN")
         }
         Button(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            onClick = onDaftar)
-        {
+            onClick = onDaftar
+        ) {
             Text("DAFTAR")
         }
     }
@@ -81,5 +80,5 @@ fun Login(onLogin: (email: String, passwd: String) -> Unit, onDaftar:()-> Unit)
 @Preview
 @Composable
 fun loginPreview() {
-    Login({},{})
+    Login(onLogin = { _, _ -> }, onDaftar = {})
 }
